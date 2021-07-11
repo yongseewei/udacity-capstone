@@ -76,15 +76,3 @@ workflows:
       - deploy-cluster:
           cluster-name: udacity-capstone
           # requires: [aws-eks/create-cluster]
-      # - aws-eks/update-container-image:
-      #     cluster-name: udacity-capstone
-      #     container-image-updates: udacity-capstone=seewei/udacity-capstone
-      #     post-steps:
-      #       - kubernetes/delete-resource:
-      #           resource-names: udacity-capstone
-      #           resource-types: deployment
-      #           wait: true
-      #     record: true
-      #     requires: [deploy-cluster]
-      #     resource-name: deployment/udacity-capstone
-     
