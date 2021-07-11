@@ -51,6 +51,11 @@ jobs:
       - kubernetes/create-or-update-resource:
           resource-file-path: deployment.yml
           resource-name: deployment/udacity-capstone
+      - run:
+          name: check cluster
+          command: |
+            kubectl get nodes
+            kubectl get deployment
           
     
 orbs:
