@@ -24,8 +24,7 @@ jobs:
             make lint   
             
   docker-build-push:
-    docker:
-      - image: docker:17.05.0-ce-git
+    machine: true
       
     steps:
       - checkout
