@@ -56,6 +56,8 @@ jobs:
           command: |
             kubectl get nodes
             kubectl get deployment
+            kubectl get service/udacity-capstone
+            kubectl describe services udacity-capstone  
           
     
 orbs:
