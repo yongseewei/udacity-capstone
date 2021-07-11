@@ -67,7 +67,7 @@ workflows:
           requires: [docker-build-push]
       - deploy-cluster:
           cluster-name: udacity-capstone
-          requires: []aws-eks/create-cluster]
+          requires: [aws-eks/create-cluster]
       - aws-eks/update-container-image:
           cluster-name: udacity-capstone
           container-image-updates: udacity-capstone=seewei/udacity-capstone
