@@ -10,18 +10,9 @@ jobs:
     steps:
       - checkout
   
-      # Download and cache dependencies
-    #   - restore_cache:
-    #       keys:
-    #         # fallback to using the latest cache if no exact match is found
-    #         - v1-dependencies
-  
       - run:
           name: install dependencies
           command: |
-            # python3 -m venv venv
-            # . venv/bin/activate
-            # make install
             # Install hadolint
             wget -O /bin/hadolint https://github.com/hadolint/hadolint/releases/download/v1.16.3/hadolint-Linux-x86_64 &&\
             chmod +x /bin/hadolint
@@ -31,8 +22,25 @@ jobs:
           name: run lint
           command: |
             make lint   
+            
+  docker-build-push:
+    docker:
+      - image: docker:17.05.0-ce-git
+      
+    steps:
+      - checkout
+      
+      - run:
+        name: build and push docker
+        command: |
+          chmod +x docker_run_push.sh
+          ./docker_run_push.sh
+          
+    
 
 workflows:
   default:
     jobs:
-        - lint
+      - lint
+      - docker-build-push:
+          requires: [lint]
