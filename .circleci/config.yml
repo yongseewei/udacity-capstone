@@ -3,7 +3,7 @@ jobs:
   lint:
     docker:
     # Use the same Docker base as the project
-      - image: python:3.7.3-stretch
+      - image: amazon/aws-cli
 
     working_directory: ~/repo
 
