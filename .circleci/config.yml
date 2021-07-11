@@ -52,7 +52,7 @@ jobs:
           resource-file-path: deployment.yml
           resource-name: deployment/udacity-capstone
       - run:
-          name: check cluster
+          name: check deploy status
           command: |
             kubectl get nodes
             kubectl get deployment
@@ -70,9 +70,9 @@ workflows:
       - lint
       - docker-build-push:
           requires: [lint]
-      # - aws-eks/create-cluster:
-      #     cluster-name: udacity-capstone
-      #     requires: [docker-build-push]
+      - aws-eks/create-cluster:
+          cluster-name: udacity-capstone-new
+          requires: [docker-build-push]
       - deploy-cluster:
-          cluster-name: udacity-capstone
-          # requires: [aws-eks/create-cluster]
+          cluster-name: udacity-capstone-new
+          requires: [aws-eks/create-cluster]
