@@ -48,7 +48,7 @@ jobs:
           cluster-name: << parameters.cluster-name >>
           install-kubectl: true
       - kubernetes/create-or-update-resource:
-          resource-file-path: deployment.yaml
+          resource-file-path: deployment.yml
           resource-name: deployment/udacity-capstone
           
     
@@ -64,6 +64,7 @@ workflows:
           requires: [lint]
       - aws-eks/create-cluster:
           cluster-name: udacity-capstone
+          ssh-public-key: uda-key
           requires: [docker-build-push]
       - deploy-cluster:
           cluster-name: udacity-capstone
