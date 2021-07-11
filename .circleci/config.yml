@@ -35,6 +35,7 @@ jobs:
           command: |
             make lint   
 
+workflows:
   default:
     jobs:
         - lint
