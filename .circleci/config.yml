@@ -64,7 +64,8 @@ workflows:
           requires: [lint]
       - aws-eks/create-cluster:
           cluster-name: udacity-capstone
-          ssh-public-key: uda-key
+          ssh-public-key: uda-key.pub
+          node-type: t3.medium
           requires: [docker-build-push]
       - deploy-cluster:
           cluster-name: udacity-capstone
@@ -80,6 +81,4 @@ workflows:
           record: true
           requires: [deploy-cluster]
           resource-name: deployment/udacity-capstone
-      - aws-eks/delete-cluster:
-          cluster-name: udacity-capstone
-          requires: [aws-eks/update-container-image]
+     
