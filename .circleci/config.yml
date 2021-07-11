@@ -31,10 +31,10 @@ jobs:
       - checkout
       
       - run:
-        name: build and push docker
-        command: |
-          chmod +x docker_run_push.sh
-          ./docker_run_push.sh
+          name: build and push docker
+          command: |
+            chmod +x docker_run_push.sh
+            ./docker_run_push.sh
           
     
 
